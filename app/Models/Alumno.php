@@ -50,7 +50,7 @@ class Alumno extends Model
                   ]);
     }
 
-    //Scopes para validar alumnos activos
+    //Scope para validar alumnos activos
     public function scopeActivos($query)
     {
       return $query->where('activo', true);
