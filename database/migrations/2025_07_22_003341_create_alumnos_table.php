@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date('fecha_de_nacimiento');
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
-            $table->string('genero', ['masculino', 'femenino', 'otro']);
-            $table-bolean('activo')->default(true);
+            $table->enum('genero', ['masculino', 'femenino', 'otro']);
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

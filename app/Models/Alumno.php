@@ -29,8 +29,8 @@ class Alumno extends Model
     }
 
 
-    //Relaciones 
-
+    //Funciones
+    //hasMany permite hacer la relacion de uno a muchos
     public function inscripciones()
     {
       return $this->hasMany(Inscripcion::class); //Un alumno puede inscribirse a muchos cursos
@@ -41,13 +41,34 @@ class Alumno extends Model
     {
       return $this->belongsToMany(Curso::class, 'inscripciones') //relacion muchos a muchos
                   ->withTimestamps() //Sirve, para saber cuándo se inscribió el alumno.
-                  ->withPivot([ //campos adicionales
+                  ->withPivot([ //campos adicionales, disponibles cuando accedés a los cursos del alumno.
                       'estado',
                       'nota_final',
                       'asistencias',
                       'evaluado_por_docente',
                       'observaciones'
                   ]);
+    }
+
+    //Scopes para validar alumnos activos
+    public function scopeActivos($query)
+    {
+      return $query->where('activo', true);
+    }
+
+    
+    //Validaciones
+    public function esMayorDe16()
+    {
+      return $this->fecha_de_nacimiento?->age >=16;
+    }
+
+    public function puedeInscribirse()
+    {
+      return $this->activo &&
+             $this->inscripciones()
+             ->where('estado', 'activo')
+             ->count() < 5;
     }
 
 }
