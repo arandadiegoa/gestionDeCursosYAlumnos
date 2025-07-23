@@ -27,6 +27,7 @@ class Docente extends Model
     }
 
     //Funciones
+    //Relacion con Cursos
     //hasMany permite hacer la relacion de uno a muchos
     public function cursos()
     {

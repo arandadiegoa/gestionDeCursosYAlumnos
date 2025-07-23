@@ -20,7 +20,7 @@ class Alumno extends Model
       'activo'
     ];
 
-    protected function casts(): array
+    protected function casts(): array //convierte automaticamente atributos
     {
       return [
         'fecha_de_nacimiento' => 'date',
@@ -30,6 +30,8 @@ class Alumno extends Model
 
 
     //Funciones
+
+    //Relacion con inscripciones
     //hasMany permite hacer la relacion de uno a muchos
     public function inscripciones()
     {
@@ -37,9 +39,11 @@ class Alumno extends Model
     }
 
 
+    //Relacion con cursos a traves de inscripciones
+    //belongsToMany permite relacion muchos a muchos
     public function cursos()
     {
-      return $this->belongsToMany(Curso::class, 'inscripciones') //relacion muchos a muchos
+      return $this->belongsToMany(Curso::class, 'inscripciones')
                   ->withTimestamps() //Sirve, para saber cuándo se inscribió el alumno.
                   ->withPivot([ //campos adicionales, disponibles cuando accedés a los cursos del alumno.
                       'estado',
