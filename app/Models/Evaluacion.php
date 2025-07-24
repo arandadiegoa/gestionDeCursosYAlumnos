@@ -4,31 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inscripcion extends Model
+class Evaluacion extends Model
 {
-    protected $table = 'inscripciones';
+    protected $table = 'evaluaciones';
 
     protected $fillable = [
       'alumno_id',
       'curso_id',
-      'fecha_inscripcion',
-      'estado',
-      'nota_final',
-      'asistencias',
-      'observaciones',
-      'evaluado_por_docente'
+      'descripcion',
+      'nota',
+      'fecha',
     ];
 
-    protected function casts(): array 
+    protected function casts(): array
     {
-      return [
-        'fecha_inscripcion' => 'date',
-        'asistencias' => 'integer',
-        'evaluado_por_docente' => 'boolean',
+      return[
+        'nota' => 'integer',
+        'fecha' => 'date',
       ];
     }
 
-    //Relaciones 
+    //Relaciones
     //Relacion con Alumnos uno a muchos inversa
     public function alumno()
     {
