@@ -18,6 +18,10 @@
                    <li class="nav-item">
                     <a class="nav-link {{ request()->is('cursos') ? 'active' : '' }}" href="{{ route('cursos.index') }}">Cursos</a>
                 </li>
+                </li>
+                   <li class="nav-item">
+                    <a class="nav-link {{ request()->is('inscripciones') ? 'active' : '' }}" href="{{ route('inscripciones.index') }}">Inscripciones</a>
+                </li>
             </ul>
         </div>
     </div>
