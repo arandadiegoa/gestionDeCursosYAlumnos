@@ -93,6 +93,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+        <a href="{{ route('docentes.index') }}" class="btn btn-secondary mt-3">Volver</a>
+
     </form>
 </div>
 

@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarContenido">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="{{ route('alumnos.index') }}">Alumnos</a>
+                    <a class="nav-link {{ request()->is('alumnos') ? 'active' : '' }}" href="{{ route('alumnos.index') }}">Alumnos</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link {{ request()->is('save') ? 'active' : '' }}" href="{{ route('docentes.index') }}">Docentes</a>
+                    <a class="nav-link {{ request()->is('docentes') ? 'active' : '' }}" href="{{ route('docentes.index') }}">Docentes</a>
                 </li>
                    <li class="nav-item">
-                    <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="#">Panel</a>
+                    <a class="nav-link {{ request()->is('cursos') ? 'active' : '' }}" href="{{ route('cursos.index') }}">Cursos</a>
                 </li>
             </ul>
         </div>

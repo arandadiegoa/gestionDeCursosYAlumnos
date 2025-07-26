@@ -107,6 +107,7 @@
       <div class="mt-4">
           <button type="submit" class="btn btn-primary w-10">Registrarse</button>
       </div>
+      <a href="{{ route('docentes.index') }}" class="btn btn-secondary mt-3">Volver</a>
     </form>
   </div>
 @endsection
