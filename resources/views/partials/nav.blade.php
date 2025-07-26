@@ -13,7 +13,7 @@
                     <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="{{ route('alumnos.index') }}">Alumnos</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link {{ request()->is('save') ? 'active' : '' }}" href="#">Inscripciones</a>
+                    <a class="nav-link {{ request()->is('save') ? 'active' : '' }}" href="{{ route('docentes.index') }}">Docentes</a>
                 </li>
                    <li class="nav-item">
                     <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="#">Panel</a>
