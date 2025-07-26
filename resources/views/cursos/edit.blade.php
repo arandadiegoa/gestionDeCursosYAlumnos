@@ -41,7 +41,7 @@
                 <div class="col">
                     <label for="fecha_inicio" class="form-label">Fecha de Inicio</label>
                     <input type="date" name="fecha_inicio" id="fecha_inicio"
-                        value="{{ old('fecha_inicio', ($curso->fecha_inicio ? $curso->fecha_inicio->format('Y-m-d') : ''))  }}"
+                        value="{{ old('fecha_inicio', $curso->fecha_inicio ? $curso->fecha_inicio->format('Y-m-d') : '') }}"
                         class="form-control @error('fecha_inicio') is-invalid @enderror" required>
                     @error('fecha_inicio')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -50,7 +50,8 @@
 
                 <div class="col">
                     <label for="fecha_fin" class="form-label">Fecha de Fin</label>
-                    <input type="date" name="fecha_fin" id="fecha_fin" value="{{ old('fecha_fin', ($curso->fecha_fin ? $curso->fecha_fin->format('Y-m-d') : ''))  }}"
+                    <input type="date" name="fecha_fin" id="fecha_fin"
+                        value="{{ old('fecha_fin', $curso->fecha_fin ? $curso->fecha_fin->format('Y-m-d') : '') }}"
                         class="form-control @error('fecha_fin') is-invalid @enderror" required>
                     @error('fecha_fin')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -130,11 +131,14 @@
                     @enderror
                 </div>
             </div>
-
-            <div class="mt-4">
-                <button type="submit" class="btn btn-primary w-10">Actualizar Curso</button>
+            <div style="display: flex; align-items:flex-end; gap:10px">
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary w-10">Actualizar Curso</button>
+                </div>
+                <div>
+                    <a href="{{ route('cursos.index') }}" class="btn btn-secondary mt-3">Volver</a>
+                </div>
             </div>
-            <a href="{{ route('cursos.index') }}" class="btn btn-secondary mt-3">Volver</a>
         </form>
     </div>
 

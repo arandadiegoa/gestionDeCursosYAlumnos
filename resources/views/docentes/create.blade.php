@@ -104,10 +104,15 @@
             <label class="form-check-label" for="activo">Activo</label>
         </div>
       </div>
-      <div class="mt-4">
-          <button type="submit" class="btn btn-primary w-10">Registrarse</button>
+        
+      <div style="display: flex; align-items:flex-end; gap:10px">
+          <div class="mt-4">
+            <button type="submit" class="btn btn-primary w-10">Registrarse</button>
+          </div>
+          <div>
+            <a href="{{ route('docentes.index') }}" class="btn btn-secondary mt-3">Volver</a>
+          </div>
       </div>
-      <a href="{{ route('docentes.index') }}" class="btn btn-secondary mt-3">Volver</a>
     </form>
   </div>
 @endsection
