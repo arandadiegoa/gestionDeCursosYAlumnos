@@ -7,7 +7,18 @@
   <a href="{{route('alumnos.create') }}" class="btn btn-primary mb-3">Nuevo Alumno</a>
 
   @if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
+    <div id="success-message" class="alert alert-success">{{ session('success') }}</div>
+     <script>
+    // Espera 3 segundos y oculta el mensaje
+    setTimeout(() => {
+      const msg = document.getElementById('success-message');
+      if (msg) {
+        msg.style.transition = 'opacity 0.5s ease';
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 500); // lo elimina del DOM
+      }
+    }, 3000);
+  </script>
   @endif
 
   @if($alumnos->count())
@@ -17,7 +28,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>DNI</th>
-                <th>Email</th>
+                <th>Activo</th>
                 <th>Acciones</th>
           </tr>
     </thead>
@@ -27,7 +38,7 @@
           <td>{{ $alumno->nombre }}</td>
           <td>{{ $alumno->apellido }}</td>
           <td>{{ $alumno->dni }}</td>
-          <td>{{ $alumno->email }}</td>
+          <td>{{ $alumno->activo ? 'Si' : 'No' }}</td>
           <td>
             <a href="{{ route('alumnos.show', $alumno) }}" class="btn btn-info btn-sm">Ver</a>
             <a href="{{ route('alumnos.edit', $alumno) }}" class="btn btn-warning btn-sm">Editar</a>
