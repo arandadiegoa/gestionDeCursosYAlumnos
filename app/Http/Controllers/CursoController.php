@@ -34,9 +34,9 @@ class CursoController extends Controller
         $request ->validate([
           'titulo' =>'required|string|max:255',
           'descripcion' =>'nullable|string',
-          'fecha_inicio' => 'required|date',
+          'fecha_inicio' => 'required|date|after_or_equal:today',
           'fecha_fin' => 'required|date|after:fecha_inicio',
-          'estado' => 'required|in:activo, finalizado, cancelado',
+          'estado' => 'required|in:activo,finalizado,cancelado',
           'modalidad' => 'required|in:presencial,virtual,hibrido',
           'aula_virtual' =>'nullable|required_if:modalidad,virtual,hibrido|string',
           'cupos_maximos' => 'nullable|integer|min:1',
