@@ -36,6 +36,8 @@
                                 <td>{{ $alumno->nombre }} {{ $alumno->apellido }}</td>
                                 <td>{{ $curso->titulo }}</td>
                                 <td>
+                                    <a href="{{ route('evaluaciones.index', ['alumno_id' => $alumno->id, 'curso_id' => $curso->id]) }}"
+                                        class="btn btn-info btn-sm">Ver Evaluaciones</a>
                                     <form action="{{ route('inscripciones.destroy', [$alumno->id, $curso->id]) }}"
                                         method="POST" class="d-inline">
                                         @csrf

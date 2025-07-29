@@ -34,6 +34,6 @@ class Evaluacion extends Model
     //Relacion con Cursos uno a muchos inversa
     public function curso()
     {
-      return $this->belongsTo(Curso::class);
+      return $this->belongsTo(Curso::class, 'curso_id');
     }
 }

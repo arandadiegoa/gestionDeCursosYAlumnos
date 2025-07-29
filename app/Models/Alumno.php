@@ -54,6 +54,11 @@ class Alumno extends Model
                   ]);
     }
 
+    public function evaluaciones()
+{
+    return $this->hasMany(Evaluacion::class);
+}
+
     //Scope para validar alumnos activos
     public function scopeActivos($query)
     {

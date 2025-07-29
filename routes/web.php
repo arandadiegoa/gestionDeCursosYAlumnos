@@ -6,7 +6,7 @@ use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\EvaluacionController;
 
 Route::get('/', function () {
     return redirect()->route('home');
@@ -46,3 +46,6 @@ Route::resource('cursos', CursoController::class); //registra automáticamente t
 Route::resource('inscripciones', InscripcionController::class)->except(['destroy']); //registra automáticamente todas las rutas necesarias
 Route::delete('inscripciones/{alumno_id}/{curso_id}', [InscripcionController::class, 'destroy'])->name('inscripciones.destroy');
 
+Route::resource('evaluaciones', EvaluacionController::class)->parameters([
+    'evaluaciones' => 'evaluacion'
+]);
