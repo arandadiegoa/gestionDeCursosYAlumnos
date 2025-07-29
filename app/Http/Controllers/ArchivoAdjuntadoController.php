@@ -16,20 +16,21 @@ class ArchivoAdjuntadoController extends Controller
     public function index()
     {
         $archivos = ArchivoAdjunto::with('curso')->latest()->get();
-        return view('archivos_adjuntos.index', compact('archivos'));
+        return view('archivos.index', compact('archivos'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
       if(!in_array(auth()->user()->rol,['admin', 'docente'])){
           abort(403);
         }
 
-        $cursos = Curso::all();
-        return view('archivos_adjuntos.create', compact('cursos'));
+        $cursoId = $request->curso_id;
+        $curso = Curso::findOrFail($request->curso_id);
+        return view('archivos.create', compact('curso'));
     }
 
     /**
@@ -75,6 +76,6 @@ class ArchivoAdjuntadoController extends Controller
         Storage::disk('public')->delete($archivo->archivo_url);
         $archivos_adjunto->delete();
 
-        return redirect()->route('archivos_adjuntos.index')->with('success', 'Archivo eliminado correctamente');
+        return redirect()->route('archivos.index')->with('success', 'Archivo eliminado correctamente');
     }
 }

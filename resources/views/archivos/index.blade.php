@@ -8,9 +8,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('archivos_adjuntos.create') }}" class="btn btn-success mb-3">Subir Nuevo Archivo</a>
-
-    <table class="table table-bordered">
+    <table class="table table-bordered mt-4">
         <thead>
             <tr>
                 <th>Curso</th>
@@ -28,11 +26,11 @@
                     <td>{{ $archivo->titulo }}</td>
                     <td>{{ ucfirst($archivo->tipo) }}</td>
                     <td>
-                        <a href="{{ asset('storage/' . $archivo->archivo_url) }}" target="_blank">Ver / Descargar</a>
+                        <a href="{{ asset('storage/' . $archivo->archivo_url) }}" target="_blank">Ver</a>
                     </td>
                     <td>{{ $archivo->fecha_subida->format('d/m/Y') }}</td>
                     <td>
-                        <form action="{{ route('archivos_adjuntos.destroy', $archivo) }}" method="POST" onsubmit="return confirm('¿Eliminar este archivo?')">
+                        <form action="{{ route('archivos.destroy', $archivo) }}" method="POST" onsubmit="return confirm('¿Eliminar este archivo?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger">Eliminar</button>

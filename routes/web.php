@@ -51,4 +51,4 @@ Route::resource('evaluaciones', EvaluacionController::class)->parameters([
     'evaluaciones' => 'evaluacion' //cambio evaluaciones por evaluacion, por convencion y claridad
 ]);
 
-Route::resource('archivos_adjuntos', ArchivoAdjuntadoController::class)->except(['show']);
+Route::resource('archivos', ArchivoAdjuntadoController::class)->except(['show']);

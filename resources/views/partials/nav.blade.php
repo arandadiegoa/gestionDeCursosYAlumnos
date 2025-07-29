@@ -41,6 +41,10 @@
                             <a class="nav-link {{ request()->is('cursos') ? 'active' : '' }}"
                                 href="{{ route('cursos.index') }}">Cursos</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link {{ request()->is('archivos') ? 'active' : '' }}"
+                                href="{{ route('archivos.index') }}">Archivos</a>
+                        </li>
                     @endif
 
                     <!-- Botón Cerrar Sesión -->
