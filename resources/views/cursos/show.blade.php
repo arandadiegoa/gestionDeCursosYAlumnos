@@ -15,6 +15,18 @@
       <li class="list-group-item"><strong>Aula Virtual:</strong> {{ $curso->aula_virtual ?? '-' }}</li>
       <li class="list-group-item"><strong>Cupos Máximos:</strong> {{ $curso->cupos_maximos }}</li>
       <li class="list-group-item"><strong>Docente:</strong> {{ $curso->docente->nombre }} {{ $curso->docente->apellido }}</li>
+      <li class="list-group-item"><strong>Archivo Ajunto:</strong>
+       <ul>
+        @forelse ($curso->archivosAdjuntos as $archivo)
+        <li>
+          <a href="{{asset('storage/' . $archivo->archivo_url)}}" target="_blank">
+          {{$archivo->titulo}}
+          </a>
+        </li>
+        @empty
+        <li>-</li>
+        @endforelse
+       </ul>
     </ul>
 
   <a href="{{ route('cursos.index') }}" class="btn btn-secondary mt-3">Volver</a>

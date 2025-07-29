@@ -53,7 +53,8 @@ class CursoController extends Controller
      */
     public function show(string $id)
     {
-        $curso = Curso::findOrFail($id);
+        $curso = Curso::with('docente', 'archivosAdjuntos')->findOrFail($id);
+
         return view('cursos.show', compact('curso'));
     }
 

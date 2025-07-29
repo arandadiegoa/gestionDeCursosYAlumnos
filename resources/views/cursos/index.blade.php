@@ -46,6 +46,7 @@
             <td>
               <a href="{{ route('cursos.show', $curso) }}" class="btn btn-info btn-sm">Ver</a>
               <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-warning btn-sm">Editar</a>
+              <a href="{{ route('archivos_adjuntos.create', ['curso_id' => $curso->id]) }}" class="btn btn-secondary btn-sm">Adjuntar archivo</a>
               <form action="{{ route('cursos.destroy', $curso) }}" method="POST" class="d-inline">
                 @csrf
                 @method('DELETE')

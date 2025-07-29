@@ -7,6 +7,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EvaluacionController;
+use App\Http\Controllers\ArchivoAdjuntadoController;
 
 Route::get('/', function () {
     return redirect()->route('home');
@@ -49,3 +50,5 @@ Route::delete('inscripciones/{alumno_id}/{curso_id}', [InscripcionController::cl
 Route::resource('evaluaciones', EvaluacionController::class)->parameters([
     'evaluaciones' => 'evaluacion' //cambio evaluaciones por evaluacion, por convencion y claridad
 ]);
+
+Route::resource('archivos_adjuntos', ArchivoAdjuntadoController::class)->except(['show']);

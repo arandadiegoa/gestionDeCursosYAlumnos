@@ -76,4 +76,9 @@ class Curso extends Model
       return in_array($this->modalidad, ['virtual', 'hibrido']);
     }
 
+      public function archivosAdjuntos()
+    {
+        return $this->hasMany(ArchivoAdjunto::class);
+    }
+
 }
