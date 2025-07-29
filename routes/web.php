@@ -47,5 +47,5 @@ Route::resource('inscripciones', InscripcionController::class)->except(['destroy
 Route::delete('inscripciones/{alumno_id}/{curso_id}', [InscripcionController::class, 'destroy'])->name('inscripciones.destroy');
 
 Route::resource('evaluaciones', EvaluacionController::class)->parameters([
-    'evaluaciones' => 'evaluacion'
+    'evaluaciones' => 'evaluacion' //cambio evaluaciones por evaluacion, por convencion y claridad
 ]);

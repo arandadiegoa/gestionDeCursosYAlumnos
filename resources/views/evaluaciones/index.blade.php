@@ -20,7 +20,7 @@
                 }, 3000);
             </script>
         @endif
-        @if ($evaluaciones->count())
+        @if ($evaluaciones->count()) {{--Valida si tiene evaluaciones--}}
             <table class="table table-bordered">
                 <thead>
                     <tr>

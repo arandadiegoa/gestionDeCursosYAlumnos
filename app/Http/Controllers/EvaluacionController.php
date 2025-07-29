@@ -49,7 +49,7 @@ class EvaluacionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate([ //valida datos enviados
           'alumno_id' => 'required|exists:alumnos,id',
           'curso_id' => 'required|exists:cursos,id',
           'descripcion' => 'required|string',
@@ -82,9 +82,9 @@ class EvaluacionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Evaluacion $evaluacion)
+    public function update(Request $request, Evaluacion $evaluacion) //actualizamos evaluacion
     {
-         $request->validate([
+         $request->validate([ //validacion de datos
             'alumno_id' => 'required|exists:alumnos,id',
             'curso_id' => 'required|exists:cursos,id',
             'descripcion' => 'required|string',
@@ -100,7 +100,7 @@ class EvaluacionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Evaluacion $evaluacion)
+    public function destroy(Evaluacion $evaluacion) //Busca la evaluacion y la elimina
     {
         $evaluacion->delete();
         return redirect()->route('evaluaciones.index')->with('success', 'Evaluación eliminada correctamente');
