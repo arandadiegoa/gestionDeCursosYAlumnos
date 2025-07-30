@@ -69,8 +69,8 @@ Incluye validaciones como:
 
 | Rol         | datos de prueba                                                              
 | ----------- | --------------------------------------------------------------------- 
-| Admin       | email: diegoAdm@gmail.com | pass: 12345678
-| Coordinador | email: gabyCoordinador@gmail.com | pass: hola1234              
+| Admin       | email: diegoAdm@gmail.com  pass: 12345678
+| Coordinador | email: gabyCoordinador@gmail.com  pass: hola1234              
 
 ---
 
