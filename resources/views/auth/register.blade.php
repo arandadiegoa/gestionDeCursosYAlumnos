@@ -77,7 +77,7 @@
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary w-10">Registrarse</button>
                 </div>
-                <a href="/" class="btn btn-success px-4">Volver</a>
+                <a href="/home" class="btn btn-success px-4">Volver</a>
             </div>
         </form>
     </div>

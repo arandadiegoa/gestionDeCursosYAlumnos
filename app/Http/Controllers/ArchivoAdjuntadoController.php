@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\ArchivoAdjunto;
 use App\Models\Curso;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class ArchivoAdjuntadoController extends Controller
      * Display a listing of the resource.
      */
     
-    public function index()
+    public function index() //muestro los archivos
     {
         $archivos = ArchivoAdjunto::with('curso')->latest()->get();
         return view('archivos.index', compact('archivos'));
@@ -22,7 +23,7 @@ class ArchivoAdjuntadoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create(Request $request) //Puedo adjuntar un archivo a un curso
     {
       if(!in_array(auth()->user()->rol,['admin', 'docente'])){
           abort(403);
@@ -36,10 +37,10 @@ class ArchivoAdjuntadoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) //guardar un archivo adjunto
     {
         $request->validate([
-          'curso_id'=> 'required|exists:cursos,id',
+          'curso_id'=> 'required|exists:cursos,id', //valida que ese ID existe.
           'titulo' => 'required|string|max:255',
           'archivo' => 'required|file|mimes:pdf,docx,ppt,jpg,png|max:10240',
           'tipo' => 'required|in:tarea,material,guia',
@@ -74,7 +75,7 @@ class ArchivoAdjuntadoController extends Controller
         }
 
         Storage::disk('public')->delete($archivo->archivo_url);
-        $archivos_adjunto->delete();
+        $archivo->delete();
 
         return redirect()->route('archivos.index')->with('success', 'Archivo eliminado correctamente');
     }

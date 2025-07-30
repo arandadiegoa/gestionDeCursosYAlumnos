@@ -19,7 +19,8 @@
        <ul>
         @forelse ($curso->archivosAdjuntos as $archivo)
         <li>
-          <a href="{{asset('storage/' . $archivo->archivo_url)}}" target="_blank" download>
+          {{--Genero la url publica para descarga--}}
+          <a href="{{asset('storage/' . $archivo->archivo_url)}}" target="_blank" download> 
           {{$archivo->titulo}}
           </a>
         </li>
