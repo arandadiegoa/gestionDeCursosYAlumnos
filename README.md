@@ -7,55 +7,88 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Sistema de Gestión de Cursos y Alumnos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplicación web desarrollada en **Laravel** para la gestión integral de alumnos, docentes, cursos, inscripciones, evaluaciones y archivos adjuntos. El sistema implementa el patrón **MVC**, **Eloquent ORM**, validaciones del lado del servidor y buenas prácticas de desarrollo.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Características principales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Gestión completa de Alumnos, Docentes y Cursos.
+- Inscripciones con control de asistencia, estado y nota final.
+- Evaluaciones por curso y alumno.
+- Carga y visualización de archivos adjuntos (materiales, tareas, guías).
+- Roles diferenciados (Admin / Coordinador).
+- Validaciones sólidas tanto en modelo como en formularios.
+- Control de acceso por rol.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🧱 Tecnologías utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Laravel 10+
+- PHP 8+
+- MySQL
+- Blade (Motor de plantillas)
+- Bootstrap / Tailwind CSS (según elección)
+- Composer
+- Git
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🧩 Entidades principales y relaciones
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Alumno**: puede inscribirse en múltiples cursos, recibir evaluaciones.
+- **Docente**: imparte cursos.
+- **Curso**: asignado a un docente, tiene inscripciones y archivos.
+- **Inscripción**: relaciona alumnos con cursos, registra estado, nota y asistencia.
+- **Evaluación**: calificación individual de un alumno en un curso.
+- **Archivo Adjunto**: material relacionado a un curso.
+- **Usuario del sistema**: rol `admin` o `coordinador`.
 
-### Premium Partners
+Incluye validaciones como:
+- Edad mínima del alumno (16 años)
+- Email y DNI únicos
+- Cupo máximo de cursos por alumno/docente
+- Restricciones en inscripción, aprobación, carga de notas
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 📌 Requisitos de instalación
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Clonar el repositorio:
 
-## Code of Conduct
+   git clone https://github.com/arandadiegoa/gestionDeCursosYAlumnos
+   
+2. Crear archivo .env y configurar la base de datos, que se encuentra en .env.example
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. Iniciar servidor local: php artisan serve
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📌 Roles y datos de prueba
 
-## License
+| Rol         | datos de prueba                                                              
+| ----------- | --------------------------------------------------------------------- 
+| Admin       | email: diegoAdm@gmail.com | pass: 12345678
+| Coordinador | email: gabyCoordinador@gmail.com | pass: hola1234              
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 📌 Diagramas ER y Documentación
+
+Se encuentran en la carpeta adjuntada
+
+---
+
+
+## ✅ CRUDs implementados
+
+Alumnos, Docentes, Cursos
+
+Inscripciones
+
+Evaluaciones
+
+Archivos
+
+Usuarios del sistema

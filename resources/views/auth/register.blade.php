@@ -19,7 +19,7 @@
             @csrf
 
             <div class="row mb-3">
-                <div class="col">
+                <div class="col-md-6">
                     <label for="name" class="form-label">Nombre</label>
                     <input type="text" id="name" name="name" value="{{ old('name') }}"
                         class="form-control @error('name') is-invalid @enderror" required>
@@ -28,7 +28,7 @@
                     @enderror
                 </div>
 
-                <div class="col">
+                <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}"
                         class="form-control @error('email') is-invalid @enderror" required>
@@ -40,17 +40,19 @@
 
             <!-- Rol del Usuario -->
             <div class="row mb-3">
-                <label for="rol" class="block text-gray-700 text-sm font-bold mb-2">Rol</label>
-                <select id="rol" name="rol"
-                    class="shadow-sm appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-                    <option value="" disabled selected>Selecciona un rol</option>
-                    <option value="admin" {{ old('rol') == 'admin' ? 'selected' : '' }}>Administrador</option>
-                    <option value="coordinador" {{ old('rol') == 'coordinador' ? 'selected' : '' }}>Coordinador</option>
-                </select>
-                @error('rol')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <div class="col-md-12">
+                    <label for="rol" class="form-label">Rol</label>
+                    <select id="rol" name="rol"
+                        class="form-control w-full shadow-sm appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                        <option value="" disabled selected>Selecciona un rol</option>
+                        <option value="admin" {{ old('rol') == 'admin' ? 'selected' : '' }}>Administrador</option>
+                        <option value="coordinador" {{ old('rol') == 'coordinador' ? 'selected' : '' }}>Coordinador</option>
+                    </select>
+                    @error('rol')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
 
             <div class="row mb-3">
@@ -70,7 +72,13 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">Registrarse</button>
+
+            <div style="display: flex; align-items:flex-end; gap:10px">
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary w-10">Registrarse</button>
+                </div>
+                <a href="/" class="btn btn-success px-4">Volver</a>
+            </div>
         </form>
     </div>
 @endsection

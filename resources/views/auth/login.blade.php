@@ -44,6 +44,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">Ingresar</button>
+      <a href="/" class="btn btn-success px-4">Volver</a>
     </form>
   </div>
 @endsection
