@@ -41,7 +41,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Subir</button>
-        <a href="{{ route('archivos.index') }}" class="btn btn-secondary">Cancelar</a>
+        <a href="{{ route('cursos.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 @endsection

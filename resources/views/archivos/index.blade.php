@@ -42,5 +42,6 @@
             @endforelse
         </tbody>
     </table>
+    <a href="{{ route('cursos.index') }}" class="btn btn-secondary">Volver</a>
 </div>
 @endsection

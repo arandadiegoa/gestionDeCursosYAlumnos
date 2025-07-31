@@ -63,6 +63,8 @@ Incluye validaciones como:
 
 3. Iniciar servidor local: php artisan serve
 
+4. La BD se encuentra en dataBase/db/gestion_de_cursos_y_alumnos.sql
+
 ---
 
 ## 📌 Roles y datos de prueba
