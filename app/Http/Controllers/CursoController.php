@@ -43,6 +43,21 @@ class CursoController extends Controller
           'docente_id' => 'required|exists:docentes,id',
         ]);
 
+        //Validar docente no tenga >3 cursos activos
+        $docenteId = $request->docente_id;
+
+        $cursosActivos = Curso::where('docente_id', $docenteId)
+          ->where('estado', 'activo')
+          ->count();
+
+        if($cursosActivos >=3 ){
+          return redirect()
+          ->back()
+          ->withErrors(['docente_id' => 'Este docente ya tiene 3 cursos activos.'])
+          ->withInput();
+        }
+
+        //Creo cursos
         Curso::create($request->all());
         
         return redirect()->route('cursos.index')->with('success', 'Curso creado correctamente.');
