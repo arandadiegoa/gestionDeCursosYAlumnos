@@ -94,12 +94,26 @@ class CursoController extends Controller
           'descripcion' =>'nullable|string',
           'fecha_inicio' => 'required|date',
           'fecha_fin' => 'required|date|after:fecha_inicio',
-          'estado' => 'required|in:activo, finalizado, cancelado',
+          'estado' => 'required|in:activo,finalizado,cancelado',
           'modalidad' => 'required|in:presencial,virtual,hibrido',
           'aula_virtual' =>'nullable|required_if:modalidad,virtual,hibrido|string',
           'cupos_maximos' => 'nullable|integer|min:1',
           'docente_id' => 'required|exists:docentes,id',
         ]);
+
+    // Validar docente si cambió o si el curso pasa a activo
+    if ($request->docente_id != $curso->docente_id || $request->estado == 'activo') {
+        $cursosActivos = Curso::where('docente_id', $request->docente_id)
+            ->where('estado', 'activo')
+            ->where('id', '!=', $curso->id) // Excluir el curso actual
+            ->count();
+
+        if ($cursosActivos >= 3) {
+            return redirect()->back()
+                ->withErrors(['docente_id' => 'Este docente ya tiene 3 cursos activos.'])
+                ->withInput();
+        }
+    }
 
         $curso->update($request->all()); //actualizar los campos
         

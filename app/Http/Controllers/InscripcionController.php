@@ -70,11 +70,20 @@ class InscripcionController extends Controller
             ->withErrors(['alumno_id' => 'El alumno ya tiene 5 cursos activos']);
           }
 
+        //Validar que el curso este activo
+          $curso = Curso::find($request->curso_id);
+          if(!$curso || $curso->estado !=='activo') {
+            return redirect()
+            ->back()
+            ->withErrors(['curso_id' => 'Solo se puede inscribir a cursos activos'])
+            ->withInput();
+          }
+
         //Registrar inscripción
         $alumno->cursos()->attach($request->curso_id, [
           'fecha_inscripcion' =>now(),
           'asistencias' => 0,
-          'estad0' => 'activo'
+          'estado' => 'activo'
         ]);
 
         return redirect()->route('inscripciones.index')->with('success', 'Alumno inscripto correctamente');
