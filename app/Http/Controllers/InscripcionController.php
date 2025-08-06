@@ -28,7 +28,7 @@ class InscripcionController extends Controller
      */
     public function create() //Formulario para inscribir un alumno a un curso
     {
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::where('activo',  1)->get();
         $cursos = Curso::all();
 
         return view('inscripciones.create', compact('alumnos', 'cursos'));
@@ -40,7 +40,11 @@ class InscripcionController extends Controller
     public function store(Request $request) //Guarda la inscripcion
     {
         $request->validate([
-          'alumno_id' =>['required', 'exists:alumnos,id'],
+          'alumno_id' =>['required', 'exists:alumnos,id',
+              Rule::exists('alumnos', 'id')->where(function($query){
+             return $query->where('activo', 1);
+            })
+        ],
           'curso_id' =>[
               'required', 'exists:cursos,id',
               Rule::unique('inscripciones')->where(function($query) use ($request){
@@ -48,13 +52,29 @@ class InscripcionController extends Controller
             }),
           ],
         ],[
+          'alumno_id.exists' => 'El alumno no existe o no esta activo.',
           'curso_id.unique' => 'Este alumno ya esta inscripto en el curso.',
         ]);
 
+        //Busca alumnos
         $alumno = Alumno::find($request->alumno_id);
+
+        //Validar que no tenga >5 cursos
+        $cursos_activos = $alumno->cursos()
+          ->wherePivot('estado', 'activo')
+          ->count();
+
+          if($cursos_activos >=5){
+            return redirect()
+            ->back()
+            ->withErrors(['alumno_id' => 'El alumno ya tiene 5 cursos activos']);
+          }
+
+        //Registrar inscripción
         $alumno->cursos()->attach($request->curso_id, [
           'fecha_inscripcion' =>now(),
-          'asistencias' => 0
+          'asistencias' => 0,
+          'estad0' => 'activo'
         ]);
 
         return redirect()->route('inscripciones.index')->with('success', 'Alumno inscripto correctamente');
